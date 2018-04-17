@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+int n;
+int maxfinding( int v[100],int start, int sfarsit)
+{
+    if(start<=sfarsit)
+    {
+        if(start==sfarsit)
+        {
+            return v[start];
+        }
+        int treime1=(start+(sfarsit-start)/3);
+        int treime2=(treime1+(sfarsit-treime1+1)/2);
+        int stanga,mijloc,dreapta;
+        stanga= maxfinding(v,start,treime1);
+        mijloc= maxfinding(v,treime1+1,treime2);
+        dreapta= maxfinding(v,treime2+1,sfarsit);
+        if(stanga<mijloc)
+        {
+            {
+            return mijloc;
+            }
+            if(mijloc<sfarsit)
+            {
+                return sfarsit;
+            }
+            else{ return mijloc;}
+
+        }
+       else
+       {
+       {return stanga;}
+       if(stanga<sfarsit)
+       {
+           return sfarsit;
+       }
+       else {return stanga;}
+
+       }
+
+    }
+}
+int main()
+{
+    int v[100];
+    cout<<"Nr de numere: ";
+    cin>>n;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>v[i];
+    }
+    int maxvalue(int v[100],int start, int sfarsit);
+    cout<<"maxvalue=";
+    cout<<maxfinding(v,1,n);
+}
